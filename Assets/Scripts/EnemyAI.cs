@@ -7,7 +7,7 @@ public class EnemyAI : MonoBehaviour
     public float timeTilShoot = 3f;
     public float timer;
     public float chanceToHit = 65f;
-    public float rngHit;
+    float rngHit;
 
     public GameObject gun;
 
@@ -15,6 +15,7 @@ public class EnemyAI : MonoBehaviour
 
     public bool isDead = false;
     public bool playerHit = false;
+    public bool gunIsDrawn = false;
     //public bool gunDrawn = false;
 
     WeaponController weaponController;
@@ -33,19 +34,22 @@ public class EnemyAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
-
-        if (!isDead && timer >= timeTilShoot && !playerHit)
+        if (gunIsDrawn)
         {
-            EnemyShoot();
-            timer = 0;
-            if (chanceToHit >= rngHit)
+            timer += Time.deltaTime;
+
+            if (!isDead && timer >= timeTilShoot && !playerHit)
             {
-                playerHit = true;
-            }
-            else
-            {
-                rngHit = Random.Range(0, 100);
+                EnemyShoot();
+                timer = 0;
+                if (chanceToHit >= rngHit)
+                {
+                    playerHit = true;
+                }
+                else
+                {
+                    rngHit = Random.Range(0, 100);
+                }
             }
         }
 

@@ -5,20 +5,36 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    string sceneName;
+    int buildIndex;
+    public int LevelID;
+
+    //LevelSelect[] levelSelect;
+
+    private void Awake()
     {
-        
+        //levelSelect = FindObjectsOfType<LevelSelect>();
+        buildIndex = SceneManager.GetActiveScene().buildIndex;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void LoadLevelByName(string sceneName)
     {
-        
+        SceneManager.LoadScene(sceneName);
     }
 
-    public void LoadGunfightScene()
+    public void LoadLevelByInt()
     {
-        SceneManager.LoadScene("GunfightScene");
+        SceneManager.LoadScene(LevelID);
+    }
+
+    public void LoadNextLevel()
+    {
+        //buildIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(buildIndex + 1);
+    }
+
+    public void ReloadCurrentLevel()
+    {
+        SceneManager.LoadScene(buildIndex);
     }
 }

@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - WinPanel
+  - DeathPanel
+  - PlayerController
   layers:
   - Default
   - TransparentFX

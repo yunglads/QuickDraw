@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -19,6 +20,11 @@ public class GameController : MonoBehaviour
     public GameObject leftButton;
     public GameObject rightButton;
     public GameObject selectButton;
+    public GameObject level1Button;
+
+    public GameObject bountiesText;
+    public GameObject levelPanel;
+
 
     float timer = 0;
 
@@ -53,12 +59,17 @@ public class GameController : MonoBehaviour
             if (mainCamera.GetCurrentAnimatorStateInfo(0).IsTag("LevelBoard"))
             {
                 backButton.SetActive(true);
+                //level1Button.SetActive(true);
+                bountiesText.SetActive(true);
+                levelPanel.SetActive(true);
+
             }
         }
         //Main character screen
         if (backToMenuButtonClicked)
         {
             backButton.SetActive(false);
+            level1Button.SetActive(false);
             
             timer += Time.deltaTime;
             if (timer >= 3f)
@@ -122,4 +133,9 @@ public class GameController : MonoBehaviour
         rightButton.SetActive(true);
         selectButton.SetActive(true);
     }
+
+    //public void LevelLoad()
+    //{
+    //    SceneManager.LoadScene("GunfightScene");
+    //}
 }
